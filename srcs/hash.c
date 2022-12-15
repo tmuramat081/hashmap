@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 07:17:03 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/12/16 07:25:44 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/12/16 07:39:48 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static unsigned long _crc32(const unsigned char *s, unsigned int len)
 		crc32val = g_crc32_tab[(crc32val^s[i]) & 0xff]^(crc32val >> 8);
 		i++;
 	}
-	return crc32val;
+	return (crc32val);
 }
 
 size_t hashmap_hash_int(const void *data)

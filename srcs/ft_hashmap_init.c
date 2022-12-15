@@ -21,24 +21,24 @@ size_t	default_hash(const void	*data)
 
 t_hashmap	*ft_hashmap_init(size_t(*hash)(const void *data))
 {
-	t_hashmap	*new_set;
+	t_hashmap	*new_map;
 
-	new_set = malloc(sizeof(t_hashmap));
-	if (!new_set)
+	new_map = malloc(sizeof(t_hashmap));
+	if (!new_map)
 		return (NULL);
-	new_set->nbits = INIT_NBITS;
-	new_set->cap = (size_t)(1 << new_set->nbits);
-	new_set->mask = new_set->cap - 1;
+	new_map->nbits = INIT_NBITS;
+	new_map->cap = (size_t)(1 << new_map ->nbits);
+	new_map->mask = new_map->cap - 1;
 	if (!hash)
-		new_set->hash = default_hash;
+		new_map->hash = default_hash;
 	else
-		new_set->hash = hash;
-	new_set->data = malloc(sizeof(t_hashmap_data) * new_set->cap);
-	if (!new_set->data)
+		new_map->hash = hash;
+	new_map->data = malloc(sizeof(t_hashmap_data) * new_map->cap);
+	if (!new_map->data)
 	{
-		free(new_set);
+		free(new_map);
 		return (NULL);
 	}
-	ft_hashmap_clear(new_set);
-	return (new_set);
+	ft_hashmap_clear(new_map);
+	return (new_map);
 }
