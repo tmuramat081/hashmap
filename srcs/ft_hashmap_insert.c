@@ -20,27 +20,6 @@ static bool	_is_over_load_factor(t_hashmap *map)
 	return (false);
 }
 
-int	ft_hashmap_get(t_hashmap *map, char *key, void **arg)
-{
-	size_t	i;
-	size_t	curr_key;
-
-	curr_key = map->hash(key);
-	i = map->mask & (curr_key * PRIME_1);
-	while (map->data[i].key != 0)
-	{
-		if (map->data[i].key == curr_key)
-		{
-			*arg = map->data[i].value;
-			return (HASHMAP_SUCCESS);
-		}
-		else
-			i = map->mask & (i + PRIME_2);
-	}
-	arg = NULL;
-	return (HASHMAP_FAILURE);
-}
-
 static int	_hash_insert(t_hashmap *map, t_hashmap_data *data)
 {
 	size_t	i;
