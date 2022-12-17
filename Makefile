@@ -5,6 +5,7 @@ CC := gcc
 SRCS := \
 	ft_hashmap_init.c \
 	ft_hashmap_insert.c \
+	ft_hashmap_remove.c \
 	ft_hashmap_delete.c \
 	ft_hashmap_resize.c \
 	ft_hashmap_find.c \

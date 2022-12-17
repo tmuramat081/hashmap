@@ -47,6 +47,7 @@ int			ft_hashmap_insert(t_hashmap *map, char *key, void *value);
 int			ft_hashmap_resize(t_hashmap *map);
 int			ft_hashmap_find(t_hashmap *map, char *key, void **arg);
 int			ft_hashmap_iterate(t_hashmap *map, int(*f)(t_hashmap_data *, void *), void *data);
+int			ft_hashmap_remove(t_hashmap *map, char *key);
 size_t		hashmap_hash_int(const void* data);
 
 #endif

@@ -21,7 +21,6 @@ int	ft_hashmap_find(t_hashmap *map, char *key, void **arg)
 	i = map->mask & (hashed_key * PRIME_1);
 	while (map->data[i].in_use == true)
 	{
-		printf("[%zu]", i);
 		if (strcmp(map->data[i].key, key) == 0)
 		{
 			*arg = map->data[i].value;
