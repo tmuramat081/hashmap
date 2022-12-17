@@ -14,8 +14,12 @@
 
 #define INIT_NBITS 16
 
-size_t	default_hash(const void	*data)
+size_t	default_hash(const void	*void_data, void *item)
 {
+	t_hashmap_data *data;
+
+	data = (t_hashmap_data *)void_data;
+	printf("%d\n", data->value);
 	return ((size_t)data);
 }
 
