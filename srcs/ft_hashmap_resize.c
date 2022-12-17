@@ -28,13 +28,13 @@ static void	*ft_memset(void *p, int c, size_t len)
 static void	_hash_reinsert(t_hashmap *map, t_hashmap_data *new_data, t_hashmap_data data)
 {
 	size_t	i;
+	size_t	hashed_key;
 
-	if (data.value == 0)
-		return ;
-	i = map->mask & (data.key * PRIME_1);
+	hashed_key = map->hash(data.key);
+	i = map->mask & (hashed_key * PRIME_1);
 	while (new_data[i].value != 0)
 	{
-		if (new_data[i].key == data.key)
+		if (strcmp(new_data[i].key, data.key) == 0)
 			return ;
 		i = map->mask & (i + PRIME_2);
 	}

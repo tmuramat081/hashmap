@@ -23,9 +23,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <string.h>
 
 typedef struct s_hashmap_data {
-	size_t	key;
+	char	*key;
 	void	*value;
 	bool	in_use;
 }	t_hashmap_data;

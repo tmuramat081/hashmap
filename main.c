@@ -36,14 +36,18 @@ int main(int argc, char **argv, char **envp)
 
     (void)argc;
     (void)argv;
-    print_env(envp);
+//    print_env(envp);
     m = ft_hashmap_init(hashmap_hash_int);
     ft_hashmap_insert(m, "one", &n1);
     ft_hashmap_insert(m, "two", &n2);
     ft_hashmap_insert(m, "three", &n2);
     ft_hashmap_insert(m, "forty_two", &n42);
-    ft_hashmap_find(m, "forty_two", &data);
-        
+    ft_hashmap_insert(m, "The quick brown fox jumps over the lazy dog", &(int){INT_MAX});
+    ft_hashmap_find(m, "one", &data);
+    printf("%d\n", *(int *)data);
+    ft_hashmap_find(m, "two", &data);
+    printf("%d\n", *(int *)data);
+    ft_hashmap_find(m, "The quick brown fox jumps over the lazy dog", &data);
     printf("%d\n", *(int *)data);
     return (0);
 }

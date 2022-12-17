@@ -14,12 +14,8 @@
 
 #define INIT_NBITS 16
 
-size_t	default_hash(const void	*void_data, void *item)
+size_t	default_hash(const void	*data)
 {
-	t_hashmap_data *data;
-
-	data = (t_hashmap_data *)void_data;
-	printf("%d\n", data->value);
 	return ((size_t)data);
 }
 
@@ -34,7 +30,7 @@ t_hashmap	*ft_hashmap_init(size_t(*hash)(const void *data))
 	new_map->cap = (size_t)(1 << new_map ->nbits);
 	new_map->mask = new_map->cap - 1;
 	if (!hash)
-		new_map->hash = default_hash;
+		new_map->hash = hashmap_hash_int;
 	else
 		new_map->hash = hash;
 	new_map->data = malloc(sizeof(t_hashmap_data) * new_map->cap);

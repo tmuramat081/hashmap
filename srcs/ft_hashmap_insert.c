@@ -20,35 +20,37 @@ static bool	_is_over_load_factor(t_hashmap *map)
 	return (false);
 }
 
-static int	_hash_insert(t_hashmap *map, t_hashmap_data *data)
+static int	_hash_insert(t_hashmap *map, char *key, void *value)
 {
 	size_t	i;
+	size_t hashed_key;
 
-	i = map->mask & (data->key * PRIME_1);
-	while (map->data[i].key != 0)
+	hashed_key = map->hash(key);
+	i = map->mask & (hashed_key * PRIME_1);
+	while (map->data[i].in_use != false)
 	{
-		if (map->data[i].key == data->key)
+		if (strcmp(map->data[i].key, key) == 0)
 			return (HASHMAP_FAILURE);
 		else
 			i = map->mask & (i + PRIME_2);
 	}
+
+	map->data[i].key = key;
+	map->data[i].value = value;
+	map->data[i].in_use = true;
 	map->len += 1;
-	map->data[i] = *data;
 	return (HASHMAP_SUCCESS);
 }
 
 int	ft_hashmap_insert(t_hashmap *map, char *key, void *value)
 {
-	t_hashmap_data	data;
-	bool			ret;
+	bool			status;
 
-	data.key = map->hash(key);
-	data.value = value;
- 	ret = _hash_insert(map, &data);
+ 	status = _hash_insert(map, key, value);
 	if (_is_over_load_factor(map) == true)
 	{
 		if (ft_hashmap_resize(map) == HASHMAP_FAILURE)
 			return (HASHMAP_FAILURE);
 	}
-	return (ret);
+	return (status);
 }
