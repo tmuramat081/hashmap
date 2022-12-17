@@ -12,19 +12,6 @@
 
 #include "ft_hashmap.h"
 
-static void	*ft_memset(void *p, int c, size_t len)
-{
-	void	*ret;
-
-	ret = p;
-	while (len--)
-	{
-		*(unsigned char *)p = (unsigned char)c;
-		p++;
-	}
-	return (ret);
-}
-
 void	ft_hashmap_clear(t_hashmap *map)
 {
 	ft_memset(map->data, 0, sizeof(t_hashmap_data) * map->cap);
