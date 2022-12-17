@@ -27,14 +27,13 @@ static int	_hash_insert(t_hashmap *map, char *key, void *value)
 
 	hashed_key = map->hash(key);
 	i = map->mask & (hashed_key * PRIME_1);
-	while (map->data[i].in_use != false)
+	while (map->data[i].in_use == true)
 	{
 		if (strcmp(map->data[i].key, key) == 0)
 			return (HASHMAP_FAILURE);
 		else
 			i = map->mask & (i + PRIME_2);
 	}
-
 	map->data[i].key = key;
 	map->data[i].value = value;
 	map->data[i].in_use = true;

@@ -1,21 +1,21 @@
 #include "ft_hashmap.h"
 
-int hashmap_iterate(t_hashmap *map, int(*f)(void *, void *), void * item)
+int ft_hashmap_iterate(t_hashmap *map, int(*f)(t_hashmap_data *, void *), void * item)
 {
-    size_t i;
-    int     ret;
-    void    *data;
+    size_t          i;
+    int             status;
+    t_hashmap_data  data;
 
 	i = 0;
 	while (i < map->cap)
 	{
-		if (map->data[i].value != 0)
+		if (map->data[i].in_use == true)
 		{
-			data = map[i].data;
-			ret = f(data, item);
-			if (ret != HASHMAP_SUCCESS)
+			data = map->data[i];
+			status = f(&data, item);
+			if (status != HASHMAP_SUCCESS)
 			{
-				return (ret);
+				return (status);
 			}
 		}
 		i++;
