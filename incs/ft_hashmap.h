@@ -27,6 +27,7 @@
 typedef struct s_hashmap_data {
 	size_t	key;
 	void	*value;
+	bool	in_use;
 }	t_hashmap_data;
 
 typedef struct s_hashmap {
@@ -44,7 +45,7 @@ void		ft_hashmap_delete(t_hashmap **map);
 int			ft_hashmap_insert(t_hashmap *map, char *key, void *value);
 int			ft_hashmap_resize(t_hashmap *map);
 int			ft_hashmap_find(t_hashmap *map, char *key, void **arg);
-int			ft_hashmap_iterate(t_hashmap *map, int(*f)(void *), void *data);
+int			ft_hashmap_iterate(t_hashmap *map, int(*f)(void *, void *), void *data);
 size_t		hashmap_hash_int(const void* data);
 
 #endif

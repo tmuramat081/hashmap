@@ -1,6 +1,6 @@
 #include "ft_hashmap.h"
 
-int hashmap_iterate(t_hashmap *map, int(*f)(void *), void * item)
+int hashmap_iterate(t_hashmap *map, int(*f)(void *, void *), void * item)
 {
     size_t i;
     int     ret;
@@ -12,7 +12,7 @@ int hashmap_iterate(t_hashmap *map, int(*f)(void *), void * item)
         if (map->data[i].value != 0)
         {
             data = map[i].data;
-            ret = f(item);
+            ret = f(data, item);
             if (ret != HASHMAP_SUCCESS) 
             {
                 return (ret);

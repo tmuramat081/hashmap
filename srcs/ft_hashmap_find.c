@@ -29,6 +29,6 @@ int	ft_hashmap_find(t_hashmap *map, char *key, void **arg)
 		else
 			i = map->mask & (i + PRIME_2);
 	}
-	arg = NULL;
+	*arg = NULL;
 	return (HASHMAP_FAILURE);
 }
