@@ -10,6 +10,7 @@ SRCS := \
 	ft_hashmap_resize.c \
 	ft_hashmap_find.c \
 	ft_hashmap_iterate.c \
+	ft_hashmap_utils.c \
 	hash.c
 
 SRC_DIR := srcs/

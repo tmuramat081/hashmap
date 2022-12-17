@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hashmap_find.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kkohki <kkohki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 07:22:02 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/12/16 07:22:05 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:11:51 by kkohki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_hashmap_find(t_hashmap *map, char *key, void **arg)
 	i = map->mask & (hashed_key * PRIME_1);
 	while (map->data[i].in_use == true)
 	{
-		if (strcmp(map->data[i].key, key) == 0)
+		if (ft_strcmp(map->data[i].key, key) == 0)
 		{
 			*arg = map->data[i].value;
 			return (HASHMAP_SUCCESS);

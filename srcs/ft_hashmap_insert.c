@@ -29,7 +29,7 @@ static int	_hash_insert(t_hashmap *map, char *key, void *value)
 	i = map->mask & (hashed_key * PRIME_1);
 	while (map->data[i].in_use == true)
 	{
-		if (strcmp(map->data[i].key, key) == 0)
+		if (ft_strcmp(map->data[i].key, key) == 0)
 			return (HASHMAP_FAILURE);
 		else
 			i = map->mask & (i + PRIME_2);

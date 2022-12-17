@@ -6,7 +6,7 @@
 /*   By: kkohki <kkohki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:42:14 by kkohki            #+#    #+#             */
-/*   Updated: 2022/12/17 16:42:16 by kkohki           ###   ########.fr       */
+/*   Updated: 2022/12/17 17:02:49 by kkohki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int ft_hashmap_remove(t_hashmap *map, char *key)
 	i = map->mask & (hashed_key * PRIME_1);
     while (map->data[i].in_use == true)
     {
-        if (strcmp(map->data[i].key, key) == 0)
+        if (ft_strcmp(map->data[i].key, key) == 0)
         {
             map->data[i].key = NULL;
             map->data[i].value = NULL;

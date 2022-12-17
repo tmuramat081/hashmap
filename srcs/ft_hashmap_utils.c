@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hashmap_utils.c                                    :+:      :+:    :+:   */
+/*   ft_hashmap_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkohki <kkohki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:42:05 by kkohki            #+#    #+#             */
-/*   Updated: 2022/12/17 16:42:07 by kkohki           ###   ########.fr       */
+/*   Updated: 2022/12/17 17:11:05 by kkohki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,22 @@ void	*ft_memset(void *p, int c, size_t len)
 	return (ret);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strcmp(const char *p1, const char *p2)
 {
-	size_t	i;
-
-	i = 0;
-	if (!n)
-		return (0);
-	while (s1[i] == s2[i])
-	{
-		if (s1[i] == '\0' || !--n)
-			return (0);
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+    const unsigned char *s1 = (const unsigned char *) p1;
+    const unsigned char *s2 = (const unsigned char *) p2;
+    unsigned char c1;
+    unsigned char c2;
+    while (true)
+    {
+        c1 = (unsigned char) *s1++;
+        c2 = (unsigned char) *s2++;
+        if (c1 == '\0')
+	        return c1 - c2;
+        if (c1 != c2)
+            break ;
+    }
+    return c1 - c2;
 }
 
 size_t	ft_strlen(const char *str)

@@ -20,10 +20,8 @@
 # define PRIME_2 5009
 # define REHASH_THRESHOLD 0.8
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include <string.h>
 
 typedef struct s_hashmap_data {
 	char	*key;
@@ -50,7 +48,7 @@ int			ft_hashmap_iterate(t_hashmap *map, int(*f)(t_hashmap_data *, void *), void
 int			ft_hashmap_remove(t_hashmap *map, char *key);
 size_t		ft_strlen(const char *str);
 void		*ft_memset(void *p, int c, size_t len);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strcmp(const char *s1, const char *s2);
 size_t		hashmap_hash_int(const void* data);
 
 #endif

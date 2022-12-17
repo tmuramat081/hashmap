@@ -21,7 +21,7 @@ static void	_hash_reinsert(t_hashmap *map, t_hashmap_data *new_data, t_hashmap_d
 	i = map->mask & (hashed_key * PRIME_1);
 	while (new_data[i].value != 0)
 	{
-		if (strcmp(new_data[i].key, data.key) == 0)
+		if (ft_strcmp(new_data[i].key, data.key) == 0)
 			return ;
 		i = map->mask & (i + PRIME_2);
 	}
